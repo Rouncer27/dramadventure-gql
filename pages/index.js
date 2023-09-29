@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { client } from "../lib/apolio";
 import { gql } from "@apollo/client";
-import { BlockRenderer } from "./components/BlockRenderer";
+import { BlockRenderer } from "../components/BlockRenderer";
 import { cleanAndTransformBlocks } from "@/utils/cleanAndTransformBlocks";
 
 export default function Home({ blocks, posts, pageData }) {
