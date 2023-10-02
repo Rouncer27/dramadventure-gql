@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import styledNormalize from "styled-normalize";
+
 import theme from "../theme/Theme";
 
 import { fontSizer } from "../helpers/index";
@@ -8,10 +8,11 @@ import PrimaryFonts from "../Fonts/PrimaryFonts";
 import SecondaryFonts from "../Fonts/SecondaryFonts";
 import TertiaryFonts from "../Fonts/TertiaryFonts";
 import FontAwesome from "../Fonts/FontAwesome";
+import "node_modules/modern-normalize/modern-normalize.css";
 
 const GlobalStyle = createGlobalStyle`
 /* Browser Reset */
-${styledNormalize}
+
 ${PrimaryFonts}
 ${SecondaryFonts}
 ${TertiaryFonts}
