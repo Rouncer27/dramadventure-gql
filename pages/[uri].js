@@ -6,7 +6,7 @@ const SlugPage = ({ post }) => {
   console.log(post);
   return (
     <div>
-      <h1>{post.title}</h1>
+      <h1>{post?.title ? post?.title : "Hello World"}</h1>
     </div>
   );
 };
