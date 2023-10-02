@@ -4,11 +4,18 @@ import theme from "../theme/Theme";
 
 import { fontSizer } from "../helpers/index";
 
+import PrimaryFonts from "../Fonts/PrimaryFonts";
+import SecondaryFonts from "../Fonts/SecondaryFonts";
+import TertiaryFonts from "../Fonts/TertiaryFonts";
+import FontAwesome from "../Fonts/FontAwesome";
+
 const GlobalStyle = createGlobalStyle`
 /* Browser Reset */
 ${styledNormalize}
-
-
+${PrimaryFonts}
+${SecondaryFonts}
+${TertiaryFonts}
+${FontAwesome}
 
 
 :root {

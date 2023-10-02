@@ -1,4 +1,3 @@
-import "@/styles/globals.css";
 import { ApolloProvider } from "@apollo/client/react";
 import { client } from "../lib/apolio";
 
