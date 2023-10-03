@@ -3,11 +3,14 @@ import { client } from "../lib/apolio";
 import { gql } from "@apollo/client";
 import { BlockRenderer } from "../components/BlockRenderer";
 import { cleanAndTransformBlocks } from "@/utils/cleanAndTransformBlocks";
+import { mapMainMenuItems } from "@/utils/mapMainMenuItems";
+import { MainMenu } from "@/components/MainMenu/MainMenu";
 
-export default function Home({ blocks, posts, pageData }) {
+export default function Home({ blocks, posts, pageData, mainMenuItems }) {
   console.log("blocks", blocks);
   console.log("posts", posts);
   console.log("pageData", pageData);
+  console.log("mainMenuItems", mainMenuItems);
   return (
     <>
       <Head>
@@ -17,6 +20,7 @@ export default function Home({ blocks, posts, pageData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <MainMenu items={mainMenuItems} />
         <div>
           <h1>{pageData.title}</h1>
         </div>
@@ -46,6 +50,33 @@ export async function getStaticProps() {
         }
       }
 
+      mainMenu {
+        mainMenu {
+          menuItems {
+            menuItem {
+              label
+              destination {
+                ... on Page {
+                  id
+                  slug
+                  uri
+                }
+              }
+            }
+            subMenuItems {
+              label
+              destination {
+                ... on Page {
+                  id
+                  slug
+                  uri
+                }
+              }
+            }
+          }
+        }
+      }
+
       posts {
         nodes {
           slug
@@ -68,6 +99,9 @@ export async function getStaticProps() {
 
   const pageData = response?.data.nodeByUri;
   const posts = response?.data.posts;
+  const mainMenuItems = mapMainMenuItems(
+    response?.data.mainMenu.mainMenu.menuItems
+  );
   const blocks = cleanAndTransformBlocks(response?.data.nodeByUri.blocks);
 
   return {
@@ -75,6 +109,7 @@ export async function getStaticProps() {
       blocks,
       posts,
       pageData,
+      mainMenuItems,
     },
   };
 }
