@@ -1,16 +1,21 @@
 import React from "react";
 import { client } from "../lib/apolio";
 import { gql } from "@apollo/client";
-import { ComponentsRenderer } from "@/components/ComponentsRenderer";
+import { getPageStaticProps } from "@/utils/getPageStaticProps";
+import { Page } from "@/components/Page";
 
-const SlugPage = (props) => {
-  console.log("Page props", props);
+const SlugPage = ({ blocks, mainMenuItems, callToAction, components }) => {
   return (
-    <>
-      <ComponentsRenderer data={props.components} />
-    </>
+    <Page
+      blocks={blocks}
+      mainMenuItems={mainMenuItems}
+      callToAction={callToAction}
+      components={components}
+    />
   );
 };
+
+export const getStaticProps = getPageStaticProps;
 
 export async function getStaticPaths() {
   const { data } = await client.query({
@@ -36,66 +41,6 @@ export async function getStaticPaths() {
         };
       }),
     fallback: "blocking",
-  };
-}
-
-export async function getStaticProps(context) {
-  const uri = `/${context.params.slug.join("/")}/`;
-  console.log("uri", uri);
-
-  const GET_PAGE_DATA = gql`
-    query GetPageData($uri: String!) {
-      nodeByUri(uri: $uri) {
-        ... on Page {
-          id
-          title
-          blocks
-          pageComponents {
-            components {
-              ... on Page_Pagecomponents_Components_Hero {
-                fieldGroupName
-                title
-              }
-            }
-          }
-        }
-      }
-
-      posts {
-        nodes {
-          slug
-          title
-          postId
-          uri
-          date
-          content
-          postTemplate {
-            postName
-          }
-        }
-      }
-    }
-  `;
-  const response = await client.query({
-    query: GET_PAGE_DATA,
-    variables: {
-      uri,
-    },
-  });
-
-  console.log("response", response);
-
-  if (!response.data.nodeByUri) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      title: response.data.nodeByUri.title,
-      components: response.data.nodeByUri.pageComponents,
-    },
   };
 }
 
