@@ -3,7 +3,7 @@ import { BlockRenderer } from "../BlockRenderer";
 import { ComponentsRenderer } from "@/components/ComponentsRenderer";
 import { MainMenu } from "@/components/MainMenu/MainMenu";
 
-export const Page = ({ blocks, mainMenuItems, callToAction, components }) => {
+export const Page = ({ mainMenuItems, callToAction, pageComponents }) => {
   return (
     <>
       <Head>
@@ -14,8 +14,7 @@ export const Page = ({ blocks, mainMenuItems, callToAction, components }) => {
       </Head>
       <main>
         <MainMenu items={mainMenuItems} callToAction={callToAction} />
-        <ComponentsRenderer data={components} />
-        <BlockRenderer blocks={blocks} />
+        <ComponentsRenderer pageComponents={pageComponents} />
       </main>
     </>
   );

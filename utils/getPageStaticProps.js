@@ -14,7 +14,6 @@ export const getPageStaticProps = async (context) => {
         ... on Page {
           id
           title
-          blocks
           pageComponents {
             components {
               ... on Page_Pagecomponents_Components_Hero {
@@ -73,17 +72,18 @@ export const getPageStaticProps = async (context) => {
   });
 
   const mainMenuItems = mapMainMenuItems(
-    response?.data.mainMenu.mainMenu.menuItems
+    response?.data?.mainMenu?.mainMenu?.menuItems
   );
-  const blocks = cleanAndTransformBlocks(response?.data.nodeByUri.blocks);
-  const callToAction = response?.data.mainMenu.mainMenu.callToActionButton;
+  const callToAction = response?.data?.mainMenu?.mainMenu?.callToActionButton;
+  const pageComponents = response?.data?.nodeByUri?.pageComponents
+    ? response?.data?.nodeByUri?.pageComponents
+    : [];
 
   return {
     props: {
-      blocks,
       mainMenuItems,
       callToAction,
-      components: response.data.nodeByUri.pageComponents,
+      pageComponents,
     },
   };
 };

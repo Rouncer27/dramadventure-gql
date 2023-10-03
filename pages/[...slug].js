@@ -4,13 +4,12 @@ import { gql } from "@apollo/client";
 import { getPageStaticProps } from "@/utils/getPageStaticProps";
 import { Page } from "@/components/Page";
 
-const SlugPage = ({ blocks, mainMenuItems, callToAction, components }) => {
+const SlugPage = ({ mainMenuItems, callToAction, pageComponents }) => {
   return (
     <Page
-      blocks={blocks}
       mainMenuItems={mainMenuItems}
       callToAction={callToAction}
-      components={components}
+      pageComponents={pageComponents}
     />
   );
 };

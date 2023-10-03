@@ -1,13 +1,12 @@
 import { getPageStaticProps } from "@/utils/getPageStaticProps";
 import { Page } from "@/components/Page";
 
-const Home = ({ blocks, mainMenuItems, callToAction, components }) => {
+const Home = ({ mainMenuItems, callToAction, pageComponents }) => {
   return (
     <Page
-      blocks={blocks}
       mainMenuItems={mainMenuItems}
       callToAction={callToAction}
-      components={components}
+      pageComponents={pageComponents}
     />
   );
 };
