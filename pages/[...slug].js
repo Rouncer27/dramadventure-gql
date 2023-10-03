@@ -85,6 +85,12 @@ export async function getStaticProps(context) {
 
   console.log("response", response);
 
+  if (!response.data.nodeByUri) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       title: response.data.nodeByUri.title,
