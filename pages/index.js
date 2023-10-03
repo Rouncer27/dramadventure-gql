@@ -6,11 +6,13 @@ import { cleanAndTransformBlocks } from "@/utils/cleanAndTransformBlocks";
 import { mapMainMenuItems } from "@/utils/mapMainMenuItems";
 import { MainMenu } from "@/components/MainMenu/MainMenu";
 
-export default function Home({ blocks, posts, pageData, mainMenuItems }) {
-  console.log("blocks", blocks);
-  console.log("posts", posts);
-  console.log("pageData", pageData);
-  console.log("mainMenuItems", mainMenuItems);
+export default function Home({
+  blocks,
+  posts,
+  pageData,
+  mainMenuItems,
+  callToAction,
+}) {
   return (
     <>
       <Head>
@@ -20,7 +22,7 @@ export default function Home({ blocks, posts, pageData, mainMenuItems }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <MainMenu items={mainMenuItems} />
+        <MainMenu items={mainMenuItems} callToAction={callToAction} />
         <div>
           <h1>{pageData.title}</h1>
         </div>
@@ -74,6 +76,16 @@ export async function getStaticProps() {
               }
             }
           }
+          callToActionButton {
+            label
+            destination {
+              ... on Page {
+                id
+                uri
+                slug
+              }
+            }
+          }
         }
       }
 
@@ -103,6 +115,7 @@ export async function getStaticProps() {
     response?.data.mainMenu.mainMenu.menuItems
   );
   const blocks = cleanAndTransformBlocks(response?.data.nodeByUri.blocks);
+  const callToAction = response?.data.mainMenu.mainMenu.callToActionButton;
 
   return {
     props: {
@@ -110,6 +123,7 @@ export async function getStaticProps() {
       posts,
       pageData,
       mainMenuItems,
+      callToAction,
     },
   };
 }

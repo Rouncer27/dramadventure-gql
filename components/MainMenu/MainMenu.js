@@ -2,8 +2,7 @@ import { medWrapper } from "@/styles/helpers";
 import Link from "next/link";
 import styled from "styled-components";
 
-export const MainMenu = ({ items }) => {
-  console.log("MainMenu: ", items);
+export const MainMenu = ({ items, callToAction }) => {
   return (
     <StyledDiv className="">
       <div className="wrapper">
@@ -13,7 +12,7 @@ export const MainMenu = ({ items }) => {
               return (
                 <li key={item.id}>
                   <Link href={item.destination}>{item.label}</Link>
-                  {item.subMenuItems?.length && (
+                  {!!item.subMenuItems?.length && (
                     <ul>
                       {item.subMenuItems.map((subItem) => {
                         return (
@@ -29,6 +28,11 @@ export const MainMenu = ({ items }) => {
                 </li>
               );
             })}
+            <li>
+              <Link href={callToAction.destination.uri}>
+                {callToAction.label}
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
