@@ -14,6 +14,7 @@ export const getPageStaticProps = async (context) => {
         ... on Page {
           id
           title
+          contentTypeName
           pageComponents {
             components {
               ... on Page_Pagecomponents_Components_Hero {
@@ -22,6 +23,12 @@ export const getPageStaticProps = async (context) => {
               }
             }
           }
+        }
+
+        ... on Whiskey {
+          id
+          title
+          contentTypeName
         }
       }
 
@@ -71,6 +78,7 @@ export const getPageStaticProps = async (context) => {
     },
   });
 
+  const pageDetails = response?.data?.nodeByUri.contentTypeName;
   const mainMenuItems = mapMainMenuItems(
     response?.data?.mainMenu?.mainMenu?.menuItems
   );
@@ -81,6 +89,7 @@ export const getPageStaticProps = async (context) => {
 
   return {
     props: {
+      pageDetails,
       mainMenuItems,
       callToAction,
       pageComponents,

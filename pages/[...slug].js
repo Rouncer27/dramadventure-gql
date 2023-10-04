@@ -3,15 +3,29 @@ import { client } from "../lib/apolio";
 import { gql } from "@apollo/client";
 import { getPageStaticProps } from "@/utils/getPageStaticProps";
 import { Page } from "@/components/Page";
+import { Whiskey } from "@/components/Whiskey";
 
-const SlugPage = ({ mainMenuItems, callToAction, pageComponents }) => {
-  return (
-    <Page
-      mainMenuItems={mainMenuItems}
-      callToAction={callToAction}
-      pageComponents={pageComponents}
-    />
-  );
+const SlugPage = ({
+  pageDetails,
+  mainMenuItems,
+  callToAction,
+  pageComponents,
+}) => {
+  console.log("pageDetails", pageDetails);
+
+  if (pageDetails === "page") {
+    return (
+      <Page
+        mainMenuItems={mainMenuItems}
+        callToAction={callToAction}
+        pageComponents={pageComponents}
+      />
+    );
+  } else if (pageDetails === "whiskey") {
+    return <Whiskey />;
+  } else {
+    return null;
+  }
 };
 
 export const getStaticProps = getPageStaticProps;
@@ -25,12 +39,17 @@ export async function getStaticPaths() {
             uri
           }
         }
+        whiskies {
+          nodes {
+            uri
+          }
+        }
       }
     `,
   });
 
   return {
-    paths: data.pages.nodes
+    paths: [...data.pages.nodes, ...data.whiskies.nodes]
       .filter((page) => page.uri !== "/")
       .map((page) => {
         return {
