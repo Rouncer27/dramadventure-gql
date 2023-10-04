@@ -78,18 +78,25 @@ export const getPageStaticProps = async (context) => {
     },
   });
 
-  const pageDetails = response?.data?.nodeByUri?.contentTypeName;
-  const mainMenuItems = mapMainMenuItems(
-    response?.data?.mainMenu?.mainMenu?.menuItems
-  );
-  const callToAction = response?.data?.mainMenu?.mainMenu?.callToActionButton;
-  const pageComponents = response?.data?.nodeByUri?.pageComponents
-    ? response?.data?.nodeByUri?.pageComponents
+  const pageData = response?.data;
+
+  const pageContentType = pageData?.nodeByUri?.contentTypeName
+    ? pageData?.nodeByUri?.contentTypeName
+    : null;
+
+  const pageComponents = pageData?.nodeByUri?.pageComponents
+    ? pageData?.nodeByUri?.pageComponents
     : [];
+
+  const mainMenuItems = mapMainMenuItems(
+    pageData?.mainMenu?.mainMenu?.menuItems
+  );
+
+  const callToAction = pageData?.mainMenu?.mainMenu?.callToActionButton;
 
   return {
     props: {
-      pageDetails,
+      pageContentType,
       mainMenuItems,
       callToAction,
       pageComponents,

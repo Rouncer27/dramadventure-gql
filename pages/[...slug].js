@@ -6,14 +6,14 @@ import { Page } from "@/components/Page";
 import { Whiskey } from "@/components/Whiskey";
 
 const SlugPage = ({
-  pageDetails,
+  pageContentType,
   mainMenuItems,
   callToAction,
   pageComponents,
 }) => {
-  console.log("pageDetails", pageDetails);
+  console.log("pageDetails", pageContentType);
 
-  if (pageDetails === "page") {
+  if (pageContentType === "page") {
     return (
       <Page
         mainMenuItems={mainMenuItems}
@@ -21,7 +21,7 @@ const SlugPage = ({
         pageComponents={pageComponents}
       />
     );
-  } else if (pageDetails === "whiskey") {
+  } else if (pageContentType === "whiskey") {
     return <Whiskey />;
   } else {
     return null;
