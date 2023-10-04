@@ -1,6 +1,5 @@
 import { client } from "../lib/apolio";
 import { gql } from "@apollo/client";
-import { cleanAndTransformBlocks } from "@/utils/cleanAndTransformBlocks";
 import { mapMainMenuItems } from "@/utils/mapMainMenuItems";
 
 export const getPageStaticProps = async (context) => {
@@ -93,6 +92,12 @@ export const getPageStaticProps = async (context) => {
   );
 
   const callToAction = pageData?.mainMenu?.mainMenu?.callToActionButton;
+
+  if (pageData?.nodeByUri === null) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

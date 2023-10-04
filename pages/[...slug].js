@@ -11,8 +11,6 @@ const SlugPage = ({
   callToAction,
   pageComponents,
 }) => {
-  console.log("pageDetails", pageContentType);
-
   if (pageContentType === "page") {
     return (
       <Page
