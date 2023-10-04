@@ -106,6 +106,5 @@ export const getPageStaticProps = async (context) => {
       callToAction,
       pageComponents,
     },
-    revalidate: 20,
   };
 };
