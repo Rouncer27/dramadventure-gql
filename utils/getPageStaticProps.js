@@ -78,7 +78,7 @@ export const getPageStaticProps = async (context) => {
     },
   });
 
-  const pageDetails = response?.data?.nodeByUri.contentTypeName;
+  const pageDetails = response?.data?.nodeByUri?.contentTypeName;
   const mainMenuItems = mapMainMenuItems(
     response?.data?.mainMenu?.mainMenu?.menuItems
   );
