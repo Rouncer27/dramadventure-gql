@@ -28,6 +28,32 @@ export const getPageStaticProps = async (context) => {
           id
           title
           contentTypeName
+          whiskyContent {
+            description
+            specs {
+              avb46OrAbove
+              naturalColour
+              nonChillFiltered
+            }
+          }
+          whiskeyOrigins {
+            nodes {
+              uri
+              name
+            }
+          }
+          whiskeyRegions {
+            nodes {
+              name
+              uri
+            }
+          }
+          whiskyTypes {
+            nodes {
+              name
+              uri
+            }
+          }
         }
       }
 
@@ -78,22 +104,13 @@ export const getPageStaticProps = async (context) => {
   });
 
   const pageData = response?.data;
-
-  const pageContentType = pageData?.nodeByUri?.contentTypeName
-    ? pageData?.nodeByUri?.contentTypeName
-    : null;
-
-  const pageComponents = pageData?.nodeByUri?.pageComponents
-    ? pageData?.nodeByUri?.pageComponents
-    : [];
-
+  const pageContent = pageData?.nodeByUri ? pageData?.nodeByUri : null;
   const mainMenuItems = mapMainMenuItems(
     pageData?.mainMenu?.mainMenu?.menuItems
   );
-
   const callToAction = pageData?.mainMenu?.mainMenu?.callToActionButton;
 
-  if (pageData?.nodeByUri === null) {
+  if (pageContent === null) {
     return {
       notFound: true,
     };
@@ -101,10 +118,9 @@ export const getPageStaticProps = async (context) => {
 
   return {
     props: {
-      pageContentType,
+      pageContent,
       mainMenuItems,
       callToAction,
-      pageComponents,
     },
   };
 };

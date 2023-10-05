@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { BlockRenderer } from "../BlockRenderer";
 import { ComponentsRenderer } from "@/components/ComponentsRenderer";
 import { MainMenu } from "@/components/MainMenu/MainMenu";
 

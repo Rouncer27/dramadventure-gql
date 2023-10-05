@@ -5,22 +5,25 @@ import { getPageStaticProps } from "@/utils/getPageStaticProps";
 import { Page } from "@/components/Page";
 import { Whiskey } from "@/components/Whiskey";
 
-const SlugPage = ({
-  pageContentType,
-  mainMenuItems,
-  callToAction,
-  pageComponents,
-}) => {
-  if (pageContentType === "page") {
+const SlugPage = ({ pageContent, mainMenuItems, callToAction }) => {
+  console.log("pageContent", pageContent);
+
+  if (pageContent.contentTypeName === "page") {
     return (
       <Page
         mainMenuItems={mainMenuItems}
         callToAction={callToAction}
-        pageComponents={pageComponents}
+        pageComponents={pageContent.pageComponents}
       />
     );
-  } else if (pageContentType === "whiskey") {
-    return <Whiskey />;
+  } else if (pageContent.contentTypeName === "whiskey") {
+    return (
+      <Whiskey
+        mainMenuItems={mainMenuItems}
+        callToAction={callToAction}
+        pageContent={pageContent}
+      />
+    );
   } else {
     return null;
   }
