@@ -59,8 +59,6 @@ export const getStaticProps = async () => {
   });
 
   const pageData = response?.data;
-  console.log("pageData: ", pageData);
-
   const mainMenuItems = mapMainMenuItems(
     pageData?.mainMenu?.mainMenu?.menuItems
   );
