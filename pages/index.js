@@ -6,7 +6,7 @@ const Home = ({ mainMenuItems, callToAction, pageContent }) => {
     <Page
       mainMenuItems={mainMenuItems}
       callToAction={callToAction}
-      pageComponents={pageContent.pageComponents}
+      pageContent={pageContent}
     />
   );
 };

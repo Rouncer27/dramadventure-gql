@@ -13,7 +13,7 @@ const SlugPage = ({ pageContent, mainMenuItems, callToAction }) => {
       <Page
         mainMenuItems={mainMenuItems}
         callToAction={callToAction}
-        pageComponents={pageContent.pageComponents}
+        pageContent={pageContent}
       />
     );
   } else if (pageContent.contentTypeName === "whiskey") {

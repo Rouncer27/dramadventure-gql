@@ -1,8 +1,8 @@
 import Head from "next/head";
-import { MainMenu } from "@/components/MainMenu/MainMenu";
+import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 export const Whiskey = ({ pageContent, mainMenuItems, callToAction }) => {
-  console.log(pageContent);
   return (
     <>
       <Head>
@@ -11,12 +11,11 @@ export const Whiskey = ({ pageContent, mainMenuItems, callToAction }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <MainMenu items={mainMenuItems} callToAction={callToAction} />
-      </div>
+      <Header items={mainMenuItems} callToAction={callToAction} />
       <main>
         <h1>{pageContent.title}</h1>
       </main>
+      <Footer />
     </>
   );
 };
