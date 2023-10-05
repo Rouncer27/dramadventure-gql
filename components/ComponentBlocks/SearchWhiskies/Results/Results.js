@@ -1,15 +1,22 @@
-import Link from "next/link";
+import { WhiskeyCard } from "../WhiskeyCard";
 
 export const Results = ({ whiskies }) => {
   return (
-    <div>
+    <>
       {whiskies.map((whiskey) => {
         return (
-          <div key={whiskey.node.databaseId}>
-            <Link href={whiskey.node.uri}>{whiskey.node.title}</Link>
-          </div>
+          <WhiskeyCard
+            key={whiskey.node.databaseId}
+            title={whiskey.node.title}
+            uri={whiskey.node.uri}
+            description={whiskey.node.whiskyContent.description}
+            specs={whiskey.node.whiskyContent.specs}
+            origins={whiskey.node.whiskeyOrigins.node}
+            regions={whiskey.node.whiskeyRegions.node}
+            types={whiskey.node.whiskyTypes.node}
+          />
         );
       })}
-    </div>
+    </>
   );
 };

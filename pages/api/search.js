@@ -20,6 +20,22 @@ const handler = async (req, res) => {
                     nonChillFiltered
                   }
                 }
+
+                whiskeyOrigins {
+                  nodes {
+                    name
+                  }
+                }
+                whiskeyRegions {
+                  nodes {
+                    name
+                  }
+                }
+                whiskyTypes {
+                  nodes {
+                    name
+                  }
+                }
               }
             }
           }
