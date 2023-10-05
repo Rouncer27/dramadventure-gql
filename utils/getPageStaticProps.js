@@ -1,16 +1,23 @@
 import { client } from "../lib/apolio";
-import { gql } from "@apollo/client";
 import { mapMainMenuItems } from "@/utils/mapMainMenuItems";
 import { GET_MAIN_MENU } from "./Queries/getMainMenu";
 import { GET_PAGE_DATA } from "./Queries/getPageData";
+import { GET_WHISKEY_DATA } from "./Queries/getWhiskeyData";
 
 export const getPageStaticProps = async (context) => {
   const uri = context?.params?.slug
     ? `/${context?.params?.slug.join("/")}/`
     : "/";
 
-  const response = await client.query({
+  const pages = await client.query({
     query: GET_PAGE_DATA,
+    variables: {
+      uri,
+    },
+  });
+
+  const whiskies = await client.query({
+    query: GET_WHISKEY_DATA,
     variables: {
       uri,
     },
@@ -20,8 +27,20 @@ export const getPageStaticProps = async (context) => {
     query: GET_MAIN_MENU,
   });
 
-  const pageData = response?.data;
-  const pageContent = pageData?.nodeByUri ? pageData?.nodeByUri : null;
+  const pageType =
+    pages?.data.nodeByUri?.contentTypeName === "page"
+      ? pages?.data.nodeByUri?.contentTypeName
+      : whiskies?.data.nodeByUri?.contentTypeName === "whiskey"
+      ? whiskies?.data.nodeByUri?.contentTypeName
+      : null;
+
+  const pageContent =
+    pageType === "page"
+      ? pages?.data.nodeByUri
+      : pageType === "whiskey"
+      ? whiskies?.data.nodeByUri
+      : null;
+
   const mainMenuItems = mapMainMenuItems(
     mainMenu?.data?.mainMenu?.mainMenu?.menuItems
   );
@@ -36,6 +55,7 @@ export const getPageStaticProps = async (context) => {
   return {
     props: {
       pageContent,
+      pageType,
       mainMenuItems,
       callToAction,
     },

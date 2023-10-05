@@ -13,38 +13,11 @@ export const GET_PAGE_DATA = gql`
               fieldGroupName
               title
             }
-          }
-        }
-      }
 
-      ... on Whiskey {
-        id
-        title
-        contentTypeName
-        whiskyContent {
-          description
-          specs {
-            avb46OrAbove
-            naturalColour
-            nonChillFiltered
-          }
-        }
-        whiskeyOrigins {
-          nodes {
-            uri
-            name
-          }
-        }
-        whiskeyRegions {
-          nodes {
-            name
-            uri
-          }
-        }
-        whiskyTypes {
-          nodes {
-            name
-            uri
+            ... on Page_Pagecomponents_Components_SearchWhiskies {
+              displayWhiskiesSearch
+              fieldGroupName
+            }
           }
         }
       }

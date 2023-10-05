@@ -5,8 +5,10 @@ import { getPageStaticProps } from "@/utils/getPageStaticProps";
 import { Page } from "@/components/Page";
 import { Whiskey } from "@/components/Whiskey";
 
-const SlugPage = ({ pageContent, mainMenuItems, callToAction }) => {
-  if (pageContent.contentTypeName === "page") {
+const SlugPage = ({ pageContent, mainMenuItems, callToAction, pageType }) => {
+  console.log("TREVOR ---> ", pageType);
+
+  if (pageType === "page") {
     return (
       <Page
         mainMenuItems={mainMenuItems}
@@ -14,7 +16,7 @@ const SlugPage = ({ pageContent, mainMenuItems, callToAction }) => {
         pageContent={pageContent}
       />
     );
-  } else if (pageContent.contentTypeName === "whiskey") {
+  } else if (pageType === "whiskey") {
     return (
       <Whiskey
         mainMenuItems={mainMenuItems}
