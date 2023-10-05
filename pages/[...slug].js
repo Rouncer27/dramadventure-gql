@@ -6,8 +6,6 @@ import { Page } from "@/components/Page";
 import { Whiskey } from "@/components/Whiskey";
 
 const SlugPage = ({ pageContent, mainMenuItems, callToAction, pageType }) => {
-  console.log("TREVOR ---> ", pageType);
-
   if (pageType === "page") {
     return (
       <Page
