@@ -6,8 +6,6 @@ import { Page } from "@/components/Page";
 import { Whiskey } from "@/components/Whiskey";
 
 const SlugPage = ({ pageContent, mainMenuItems, callToAction }) => {
-  console.log("pageContent", pageContent);
-
   if (pageContent.contentTypeName === "page") {
     return (
       <Page
