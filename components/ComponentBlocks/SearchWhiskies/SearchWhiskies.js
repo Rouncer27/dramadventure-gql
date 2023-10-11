@@ -66,13 +66,20 @@ export const SearchWhiskies = ({
       filterTypes: filterTypesInit,
     } = queryString.parse(window.location.search);
 
-    setFilterRegions(
-      filterRegionsInit?.split(",").map((regoin) => `${regoin}`)
-    );
-    setFilterOrigins(
-      filterOriginsInit?.split(", ").map((origin) => `${origin}`)
-    );
-    setFilterTypes(filterTypesInit?.split(", ").map((type) => `${type}`));
+    if (filterRegionsInit !== undefined) {
+      setFilterRegions(
+        filterRegionsInit?.split(",").map((regoin) => `${regoin}`)
+      );
+    }
+    if (filterOriginsInit !== undefined) {
+      setFilterOrigins(
+        filterOriginsInit?.split(", ").map((origin) => `${origin}`)
+      );
+    }
+
+    if (filterTypesInit !== undefined) {
+      setFilterTypes(filterTypesInit?.split(", ").map((type) => `${type}`));
+    }
 
     search();
   }, []);
@@ -141,6 +148,10 @@ export const SearchWhiskies = ({
 
     search();
   };
+
+  console.log("filterRegions: ", filterRegions);
+  console.log("filterOrigins: ", filterOrigins);
+  console.log("filterTypes: ", filterTypes);
 
   return (
     <div>
