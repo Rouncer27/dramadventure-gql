@@ -81,7 +81,7 @@ export const SearchWhiskies = ({
     switch (filter) {
       case "regions":
         const currentRegions = filterRegions;
-        const isRegionChecked = currentRegions.indexOf(event.target.value);
+        const isRegionChecked = currentRegions?.indexOf(event.target.value);
 
         if (isRegionChecked === -1) {
           return setFilterRegions(() => {
@@ -96,7 +96,7 @@ export const SearchWhiskies = ({
 
       case "origins":
         const currentrOrigins = filterOrigins;
-        const isOriginChecked = currentrOrigins.indexOf(event.target.value);
+        const isOriginChecked = currentrOrigins?.indexOf(event.target.value);
 
         if (isOriginChecked === -1) {
           return setFilterOrigins(() => {
@@ -111,7 +111,7 @@ export const SearchWhiskies = ({
 
       case "types":
         const currentrTypes = filterTypes;
-        const isTypeChecked = currentrTypes.indexOf(event.target.value);
+        const isTypeChecked = currentrTypes?.indexOf(event.target.value);
 
         if (isTypeChecked === -1) {
           return setFilterTypes(() => {
