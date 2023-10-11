@@ -41,6 +41,10 @@ export const getPageStaticProps = async (context) => {
       ? whiskies?.data.nodeByUri
       : null;
 
+  const whiskeyRegions = pages?.data ? pages?.data?.whiskeyRegions : [];
+  const whiskeyOrigins = pages?.data ? pages?.data?.whiskeyOrigins : [];
+  const whiskyTypes = pages?.data ? pages?.data?.whiskyTypes : [];
+
   const mainMenuItems = mapMainMenuItems(
     mainMenu?.data?.mainMenu?.mainMenu?.menuItems
   );
@@ -56,6 +60,9 @@ export const getPageStaticProps = async (context) => {
     props: {
       pageContent,
       pageType,
+      whiskeyRegions,
+      whiskeyOrigins,
+      whiskyTypes,
       mainMenuItems,
       callToAction,
     },

@@ -4,12 +4,51 @@ import { gql } from "@apollo/client";
 const handler = async (req, res) => {
   try {
     const filters = JSON.parse(req.body);
+
+    let hasRegionFilter = ``;
+    let hasOriginFilter = ``;
+    let hasTypeFilter = ``;
+
+    if (filters.filterRegions) {
+      const regionsArray = filters.filterRegions.split(",");
+      hasRegionFilter = `{
+        operator: IN,
+        terms: [${regionsArray.map((regoin) => `"${regoin}"`)}],
+        taxonomy: WHISKEYREGION,
+        field: SLUG
+        },`;
+    }
+
+    if (filters.filterOrigins) {
+      const originsArray = filters.filterOrigins.split(",");
+      hasOriginFilter = `{
+        operator: IN,
+        terms:[${originsArray.map((origin) => `"${origin}"`)}],
+        taxonomy: WHISKEYORIGIN,
+        field: SLUG
+      },`;
+    }
+
+    if (filters.filterTypes) {
+      const typesArray = filters.filterTypes.split(",");
+      hasTypeFilter = `   {
+        operator: IN,
+        terms:[${typesArray.map((type) => `"${type}"`)}],
+        taxonomy: WHISKYTYPE,
+        field: SLUG
+      },`;
+    }
+
     const { data } = await client.query({
       query: gql`
         query AllWhiskiesQuery {
           whiskies(where: { offsetPagination: { size: 3, offset: ${
             ((filters.page || 1) - 1) * 3
-          } } }) {
+          } } taxQuery: {relation: AND, taxArray: [
+            ${hasRegionFilter}
+            ${hasOriginFilter}
+            ${hasTypeFilter}
+          ]}}) {
             pageInfo {
               offsetPagination {
                 total

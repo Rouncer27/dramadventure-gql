@@ -22,5 +22,26 @@ export const GET_PAGE_DATA = gql`
         }
       }
     }
+
+    whiskeyRegions {
+      nodes {
+        name
+        slug
+      }
+    }
+
+    whiskeyOrigins {
+      nodes {
+        name
+        slug
+      }
+    }
+
+    whiskyTypes {
+      nodes {
+        name
+        slug
+      }
+    }
   }
 `;

@@ -3,7 +3,14 @@ import { Header } from "../Header";
 import { ComponentsRenderer } from "@/components/ComponentsRenderer";
 import { Footer } from "../Footer";
 
-export const Page = ({ mainMenuItems, callToAction, pageContent }) => {
+export const Page = ({
+  mainMenuItems,
+  callToAction,
+  pageContent,
+  whiskeyRegions,
+  whiskeyOrigins,
+  whiskyTypes,
+}) => {
   return (
     <>
       <Head>
@@ -14,7 +21,12 @@ export const Page = ({ mainMenuItems, callToAction, pageContent }) => {
       </Head>
       <Header items={mainMenuItems} callToAction={callToAction} />
       <main>
-        <ComponentsRenderer pageComponents={pageContent.pageComponents} />
+        <ComponentsRenderer
+          pageComponents={pageContent.pageComponents}
+          whiskeyRegions={whiskeyRegions}
+          whiskeyOrigins={whiskeyOrigins}
+          whiskyTypes={whiskyTypes}
+        />
       </main>
       <Footer />
     </>
