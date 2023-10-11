@@ -88,7 +88,7 @@ export const SearchWhiskies = ({
             return [...currentRegions, event.target.value];
           });
         } else {
-          currentRegions.splice(isRegionChecked, 1);
+          currentRegions?.splice(isRegionChecked, 1);
           return setFilterRegions(() => {
             return [...currentRegions];
           });
@@ -103,7 +103,7 @@ export const SearchWhiskies = ({
             return [...currentrOrigins, event.target.value];
           });
         } else {
-          currentrOrigins.splice(isOriginChecked, 1);
+          currentrOrigins?.splice(isOriginChecked, 1);
           return setFilterOrigins(() => {
             return [...currentrOrigins];
           });
@@ -118,7 +118,7 @@ export const SearchWhiskies = ({
             return [...currentrTypes, event.target.value];
           });
         } else {
-          currentrTypes.splice(isTypeChecked, 1);
+          currentrTypes?.splice(isTypeChecked, 1);
           return setFilterTypes(() => {
             return [...currentrTypes];
           });
