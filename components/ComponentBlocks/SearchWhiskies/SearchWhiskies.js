@@ -56,6 +56,7 @@ export const SearchWhiskies = ({
       }
     );
     search();
+    console.log("PUSH");
   };
 
   useEffect(() => {
