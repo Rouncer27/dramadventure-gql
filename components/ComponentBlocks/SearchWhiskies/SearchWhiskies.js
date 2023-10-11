@@ -66,11 +66,13 @@ export const SearchWhiskies = ({
       filterTypes: filterTypesInit,
     } = queryString.parse(window.location.search);
 
-    setFilterRegions(filterRegionsInit.split(",").map((regoin) => `${regoin}`));
-    setFilterOrigins(
-      filterOriginsInit.split(", ").map((origin) => `${origin}`)
+    setFilterRegions(
+      filterRegionsInit?.split(",").map((regoin) => `${regoin}`)
     );
-    setFilterTypes(filterTypesInit.split(", ").map((type) => `${type}`));
+    setFilterOrigins(
+      filterOriginsInit?.split(", ").map((origin) => `${origin}`)
+    );
+    setFilterTypes(filterTypesInit?.split(", ").map((type) => `${type}`));
 
     search();
   }, []);

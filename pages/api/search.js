@@ -10,7 +10,7 @@ const handler = async (req, res) => {
     let hasTypeFilter = ``;
 
     if (filters.filterRegions) {
-      const regionsArray = filters.filterRegions.split(",");
+      const regionsArray = filters?.filterRegions?.split(",");
       hasRegionFilter = `{
         operator: IN,
         terms: [${regionsArray.map((regoin) => `"${regoin}"`)}],
@@ -20,7 +20,7 @@ const handler = async (req, res) => {
     }
 
     if (filters.filterOrigins) {
-      const originsArray = filters.filterOrigins.split(",");
+      const originsArray = filters?.filterOrigins?.split(",");
       hasOriginFilter = `{
         operator: IN,
         terms:[${originsArray.map((origin) => `"${origin}"`)}],
@@ -30,7 +30,7 @@ const handler = async (req, res) => {
     }
 
     if (filters.filterTypes) {
-      const typesArray = filters.filterTypes.split(",");
+      const typesArray = filters?.filterTypes?.split(",");
       hasTypeFilter = `   {
         operator: IN,
         terms:[${typesArray.map((type) => `"${type}"`)}],
