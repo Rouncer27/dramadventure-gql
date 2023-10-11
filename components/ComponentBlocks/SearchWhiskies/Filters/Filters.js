@@ -12,6 +12,12 @@ export const Filters = ({
       <h1>Filters</h1>
       <p>Whiskey Regions</p>
       {whiskeyRegions.nodes.map((region, index) => {
+        const isFilterChecked =
+          filterRegions &&
+          filterRegions.length > 0 &&
+          filterRegions?.indexOf(region.slug) !== -1
+            ? true
+            : false;
         return (
           <div key={index}>
             <input
@@ -20,10 +26,7 @@ export const Filters = ({
               name="whiskeyRegions"
               value={region.slug}
               onChange={(event) => handleCheckbox(event, "regions")}
-              checked={
-                filterRegions?.length > 0 &&
-                filterRegions?.indexOf(region.slug) !== -1
-              }
+              checked={isFilterChecked}
             />
             <label htmlFor={region.slug}>{region.name}</label>
           </div>
@@ -31,6 +34,13 @@ export const Filters = ({
       })}
       <p>Whiskey Origins</p>
       {whiskeyOrigins.nodes.map((origin, index) => {
+        const isFilterChecked =
+          filterOrigins &&
+          filterOrigins.length > 0 &&
+          filterOrigins?.indexOf(origin.slug) !== -1
+            ? true
+            : false;
+
         return (
           <div key={index}>
             <input
@@ -39,10 +49,7 @@ export const Filters = ({
               name="whiskeyOrigins"
               value={origin.slug}
               onChange={(event) => handleCheckbox(event, "origins")}
-              checked={
-                filterOrigins?.legnth > 0 &&
-                filterOrigins?.indexOf(origin.slug) !== -1
-              }
+              checked={isFilterChecked}
             />
             <label htmlFor={origin.slug}>{origin.name}</label>
           </div>
@@ -51,6 +58,13 @@ export const Filters = ({
 
       <p>Whiskey Types</p>
       {whiskyTypes.nodes.map((type, index) => {
+        const isFilterChecked =
+          filterTypes &&
+          filterTypes.length > 0 &&
+          filterTypes?.indexOf(type.slug) !== -1
+            ? true
+            : false;
+
         return (
           <div key={index}>
             <input
@@ -59,10 +73,7 @@ export const Filters = ({
               name="whiskyTypes"
               value={type.slug}
               onChange={(event) => handleCheckbox(event, "types")}
-              checked={
-                filterTypes?.length > 0 &&
-                filterTypes?.indexOf(type.slug) !== -1
-              }
+              checked={isFilterChecked}
             />
             <label htmlFor={type.slug}>{type.name}</label>
           </div>
