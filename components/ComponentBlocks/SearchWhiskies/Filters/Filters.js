@@ -20,7 +20,10 @@ export const Filters = ({
               name="whiskeyRegions"
               value={region.slug}
               onChange={(event) => handleCheckbox(event, "regions")}
-              checked={filterRegions?.indexOf(region.slug) !== -1}
+              checked={
+                filterRegions?.length > 0 &&
+                filterRegions?.indexOf(region.slug) !== -1
+              }
             />
             <label htmlFor={region.slug}>{region.name}</label>
           </div>
@@ -36,7 +39,10 @@ export const Filters = ({
               name="whiskeyOrigins"
               value={origin.slug}
               onChange={(event) => handleCheckbox(event, "origins")}
-              checked={filterOrigins?.indexOf(origin.slug) !== -1}
+              checked={
+                filterOrigins?.legnth > 0 &&
+                filterOrigins?.indexOf(origin.slug) !== -1
+              }
             />
             <label htmlFor={origin.slug}>{origin.name}</label>
           </div>
@@ -53,7 +59,10 @@ export const Filters = ({
               name="whiskyTypes"
               value={type.slug}
               onChange={(event) => handleCheckbox(event, "types")}
-              checked={filterTypes?.indexOf(type.slug) !== -1}
+              checked={
+                filterTypes?.length > 0 &&
+                filterTypes?.indexOf(type.slug) !== -1
+              }
             />
             <label htmlFor={type.slug}>{type.name}</label>
           </div>
