@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { styled } from "styled-components";
 import { Results } from "./Results";
 import { Pagination } from "./Pagination";
 import { useRouter } from "next/router";
 import queryString from "query-string";
 import { Filters } from "./Filters";
+import { Btn1One, medWrapper } from "@/styles/helpers";
 
 export const SearchWhiskies = ({
   whiskeyRegions,
@@ -154,26 +156,60 @@ export const SearchWhiskies = ({
   console.log("filterTypes: ", filterTypes);
 
   return (
-    <div>
-      <div>
-        <Filters
-          whiskeyRegions={whiskeyRegions}
-          whiskeyOrigins={whiskeyOrigins}
-          whiskyTypes={whiskyTypes}
-          filterRegions={filterRegions}
-          filterOrigins={filterOrigins}
-          filterTypes={filterTypes}
-          handleCheckbox={handleCheckbox}
-        />
-        <div>
-          <button onClick={handleSearch}>Search</button>
+    <StyledSection>
+      <div className="sec-wrapper">
+        <div className="sec-filers">
+          <Filters
+            whiskeyRegions={whiskeyRegions}
+            whiskeyOrigins={whiskeyOrigins}
+            whiskyTypes={whiskyTypes}
+            filterRegions={filterRegions}
+            filterOrigins={filterOrigins}
+            filterTypes={filterTypes}
+            handleCheckbox={handleCheckbox}
+          />
+          <StyledButton>
+            <button onClick={handleSearch}>Update Results</button>
+          </StyledButton>
         </div>
-        <Results whiskies={whiskies} />
-        <Pagination
-          onPageClick={handlePageClick}
-          totalPages={Math.ceil(totalResults / PAGE_SIZE)}
-        />
+        <div className="sec-results">
+          <Results whiskies={whiskies} />
+        </div>
+        <div className="sec-pagination">
+          <Pagination
+            onPageClick={handlePageClick}
+            totalPages={Math.ceil(totalResults / PAGE_SIZE)}
+          />
+        </div>
       </div>
-    </div>
+    </StyledSection>
   );
 };
+
+const StyledSection = styled.div`
+  .sec-wrapper {
+    ${medWrapper};
+  }
+
+  .sec-filers {
+    width: 25%;
+  }
+
+  .sec-results {
+    width: 75%;
+  }
+
+  .sec-pagination {
+    width: 100%;
+    margin-top: 2.5rem;
+  }
+`;
+
+const StyledButton = styled.div`
+  justify-content: flex-start;
+
+  a,
+  button {
+    ${Btn1One};
+  }
+`;
