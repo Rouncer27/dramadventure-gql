@@ -48,6 +48,8 @@ export const getPageStaticProps = async (context) => {
   const mainMenuItems = mapMainMenuItems(
     mainMenu?.data?.mainMenu?.mainMenu?.menuItems
   );
+  const mainLogo =
+    mainMenu?.data?.acfOptionsSiteWideSettings?.siteWideSettings?.mainLogo;
   const callToAction = mainMenu?.data?.mainMenu?.mainMenu?.callToActionButton;
 
   if (pageContent === null) {
@@ -65,6 +67,7 @@ export const getPageStaticProps = async (context) => {
       whiskyTypes,
       mainMenuItems,
       callToAction,
+      mainLogo,
     },
   };
 };

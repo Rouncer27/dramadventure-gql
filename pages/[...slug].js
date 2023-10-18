@@ -13,6 +13,7 @@ const SlugPage = ({
   whiskeyRegions,
   whiskeyOrigins,
   whiskyTypes,
+  mainLogo,
 }) => {
   if (pageType === "page") {
     return (
@@ -23,6 +24,7 @@ const SlugPage = ({
         whiskeyRegions={whiskeyRegions}
         whiskeyOrigins={whiskeyOrigins}
         whiskyTypes={whiskyTypes}
+        mainLogo={mainLogo}
       />
     );
   } else if (pageType === "whiskey") {
@@ -31,6 +33,7 @@ const SlugPage = ({
         mainMenuItems={mainMenuItems}
         callToAction={callToAction}
         pageContent={pageContent}
+        mainLogo={mainLogo}
       />
     );
   } else {

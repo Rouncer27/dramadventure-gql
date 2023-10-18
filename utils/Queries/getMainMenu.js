@@ -38,5 +38,14 @@ export const GET_MAIN_MENU = gql`
         }
       }
     }
+
+    acfOptionsSiteWideSettings {
+      siteWideSettings {
+        mainLogo {
+          altText
+          sourceUrl
+        }
+      }
+    }
   }
 `;
