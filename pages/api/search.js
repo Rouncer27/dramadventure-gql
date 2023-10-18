@@ -9,7 +9,7 @@ const handler = async (req, res) => {
     let hasOriginFilter = ``;
     let hasTypeFilter = ``;
 
-    if (filters.filterRegions) {
+    if (filters.filterRegions && filters.filterRegions !== "undefined") {
       const regionsArray = filters?.filterRegions?.split(",");
       hasRegionFilter = `{
         operator: IN,
@@ -19,7 +19,7 @@ const handler = async (req, res) => {
         },`;
     }
 
-    if (filters.filterOrigins) {
+    if (filters.filterOrigins && filters.filterOrigins !== "undefined") {
       const originsArray = filters?.filterOrigins?.split(",");
       hasOriginFilter = `{
         operator: IN,
@@ -29,7 +29,7 @@ const handler = async (req, res) => {
       },`;
     }
 
-    if (filters.filterTypes) {
+    if (filters.filterTypes && filters.filterTypes !== "undefined") {
       const typesArray = filters?.filterTypes?.split(",");
       hasTypeFilter = `   {
         operator: IN,
@@ -39,10 +39,12 @@ const handler = async (req, res) => {
       },`;
     }
 
+    console.log("TREVOR --> ", hasRegionFilter, hasOriginFilter, hasTypeFilter);
+
     const { data } = await client.query({
       query: gql`
         query AllWhiskiesQuery {
-          whiskies(where: { offsetPagination: { size: 3, offset: ${
+          whiskies(where: { orderby: {field: TITLE, order: ASC},offsetPagination: { size: 3, offset: ${
             ((filters.page || 1) - 1) * 3
           } } taxQuery: {relation: AND, taxArray: [
             ${hasRegionFilter}

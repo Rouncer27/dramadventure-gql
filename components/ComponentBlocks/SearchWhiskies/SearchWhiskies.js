@@ -42,16 +42,26 @@ export const SearchWhiskies = ({
   };
 
   const handlePageClick = async (pageNumber) => {
-    const {
-      filterRegions: filterRegionsInit,
-      filterOrigins: filterOriginsInit,
-      filterTypes: filterTypesInit,
-    } = queryString.parse(window.location.search);
+    const searchRes = queryString.parse(window.location.search);
+    const filterRegionsInit = searchRes.filterRegions
+      ? `&filterRegions=${searchRes.filterRegions}`
+      : "";
+    const filterOriginsInit = searchRes.filterOrigins
+      ? `&filterOrigins=${searchRes.filterOrigins}`
+      : "";
+    const filterTypesInit = searchRes.filterTypes
+      ? `&filterTypes=${searchRes.filterTypes}`
+      : "";
+
+    console.log(
+      "queryString.parse(window.location.search)",
+      queryString.parse(window.location.search)
+    );
 
     await router.push(
       `${router.query.slug.join(
         "/"
-      )}?page=${pageNumber}&filterRegions=${filterRegionsInit}&filterOrigins=${filterOriginsInit}&filterTypes=${filterTypesInit}`,
+      )}?page=${pageNumber}${filterRegionsInit}${filterOriginsInit}${filterTypesInit}`,
       null,
       {
         shallow: true,
