@@ -12,6 +12,10 @@ export const GET_PAGE_DATA = gql`
             ... on Page_Pagecomponents_Components_Hero {
               fieldGroupName
               title
+              heroImage {
+                altText
+                sourceUrl
+              }
             }
 
             ... on Page_Pagecomponents_Components_SearchWhiskies {
