@@ -7,12 +7,15 @@ import { styled } from "styled-components";
 import {
   B1Black,
   B2Black,
+  Btn1One,
+  Btn1Two,
   H1Black,
   H2Black,
   H3Black,
   H4Black,
   medWrapper,
 } from "@/styles/helpers";
+import Link from "next/link";
 
 export const Page = ({
   mainMenuItems,
@@ -68,6 +71,8 @@ export const Page = ({
               pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu,
               fermentum et, dapibus sed, urna.
             </p>
+            <Link href="/">About US</Link>
+            <button disabled>Repo Room</button>
           </div>
         </Typography>
       </main>
@@ -109,5 +114,13 @@ const Typography = styled.div`
   .p2 {
     width: 100%;
     ${B2Black};
+  }
+
+  a {
+    ${Btn1One};
+  }
+
+  button {
+    ${Btn1Two};
   }
 `;
