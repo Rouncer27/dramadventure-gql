@@ -15,7 +15,7 @@ const Btn1Base = css`
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
-  line-height: 3.88;
+  line-height: 2;
   letter-spacing: normal;
   text-align: center;
   text-transform: uppercase;
