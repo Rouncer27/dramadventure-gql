@@ -1,9 +1,9 @@
 const themeFonts = {
-  fontPrimary: "Barlow",
-  fontSecondary: "Barlow Condensed",
-  fontTertiary: "Ubuntu",
+  fontPrimary: "Montserrat",
+  fontSecondary: "Prata",
+  fontTertiary: "Montserrat",
   fontAwesome: "FontAwesome",
   baseLineHeight: "1.5",
-}
+};
 
-export default themeFonts
+export default themeFonts;

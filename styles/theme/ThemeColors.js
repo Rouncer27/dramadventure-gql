@@ -1,8 +1,8 @@
 const themeColors = {
-  colorPrimary: "#cb573b",
-  colorSecondary: "#056b45",
-  colorTertiary: "#3a4b48",
-  colorAccent: "#474744",
+  colorPrimary: "#403F3F",
+  colorSecondary: "#005A3C",
+  colorTertiary: "#B9441B",
+  colorAccent: "#D9C99E",
   colorShad: "#2a4a53",
   white: "#d6d7d7",
   grey: "rgba(226,232,233, 1)",
