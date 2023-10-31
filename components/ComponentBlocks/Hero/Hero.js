@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import Image from "next/image";
 
 export const Hero = ({ data }) => {
-  console.log("data", data);
+  console.log("Hero data", data);
   return (
     <StyledSection>
       <div className="hero-title">

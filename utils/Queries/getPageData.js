@@ -11,10 +11,24 @@ export const GET_PAGE_DATA = gql`
           components {
             ... on Page_Pagecomponents_Components_Hero {
               fieldGroupName
-              title
               heroImage {
                 altText
                 sourceUrl
+              }
+              heroContent {
+                boxColour
+                title
+                button {
+                  buttonText
+                  fieldGroupName
+                  pageLink {
+                    ... on Page {
+                      id
+                      slug
+                      uri
+                    }
+                  }
+                }
               }
             }
 
