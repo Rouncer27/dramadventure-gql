@@ -20,7 +20,8 @@ export const GET_PAGE_DATA = gql`
                 title
                 button {
                   buttonText
-                  fieldGroupName
+                  buttonType
+                  buttonUrl
                   pageLink {
                     ... on Page {
                       id
