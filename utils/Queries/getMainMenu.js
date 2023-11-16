@@ -10,20 +10,20 @@ export const GET_MAIN_MENU = gql`
             destination {
               ... on Page {
                 id
-                slug
                 uri
+                slug
               }
             }
           }
           subMenuItems {
-            label
             destination {
               ... on Page {
                 id
-                slug
                 uri
+                slug
               }
             }
+            label
           }
         }
         callToActionButton {
@@ -31,8 +31,8 @@ export const GET_MAIN_MENU = gql`
           destination {
             ... on Page {
               id
-              uri
               slug
+              uri
             }
           }
         }
@@ -42,8 +42,8 @@ export const GET_MAIN_MENU = gql`
     acfOptionsSiteWideSettings {
       siteWideSettings {
         mainLogo {
-          altText
           sourceUrl
+          altText
         }
       }
     }

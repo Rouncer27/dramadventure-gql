@@ -41,6 +41,7 @@ export const MainMenu = ({ items, callToAction }) => {
 };
 
 const StyledDiv = styled.div`
+  background-color: ${colors.colorAccent};
   .wrapper {
     ${medWrapper};
   }

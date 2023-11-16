@@ -27,6 +27,10 @@ export const getPageStaticProps = async (context) => {
     query: GET_MAIN_MENU,
   });
 
+  // const pages = null;
+  // const whiskies = null;
+  // const mainMenu = null;
+
   const pageType =
     pages?.data.nodeByUri?.contentTypeName === "page"
       ? pages?.data.nodeByUri?.contentTypeName
@@ -45,9 +49,11 @@ export const getPageStaticProps = async (context) => {
   const whiskeyOrigins = pages?.data ? pages?.data?.whiskeyOrigins : [];
   const whiskyTypes = pages?.data ? pages?.data?.whiskyTypes : [];
 
+  // const mainMenuItems = null;
   const mainMenuItems = mapMainMenuItems(
     mainMenu?.data?.mainMenu?.mainMenu?.menuItems
   );
+
   const mainLogo =
     mainMenu?.data?.acfOptionsSiteWideSettings?.siteWideSettings?.mainLogo;
   const callToAction = mainMenu?.data?.mainMenu?.mainMenu?.callToActionButton;
