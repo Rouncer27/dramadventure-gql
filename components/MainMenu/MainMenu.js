@@ -1,10 +1,16 @@
-import { B1Black, B1White, colors, medWrapper } from "@/styles/helpers";
+import {
+  B1Black,
+  B1White,
+  Btn1One,
+  colors,
+  medWrapper,
+} from "@/styles/helpers";
 import Link from "next/link";
 import styled from "styled-components";
 
 export const MainMenu = ({ items, callToAction }) => {
   return (
-    <StyledDiv className="">
+    <StyledDiv>
       <div className="wrapper">
         <nav>
           <ul className="main-menu">
@@ -28,7 +34,7 @@ export const MainMenu = ({ items, callToAction }) => {
                 </li>
               );
             })}
-            <li>
+            <li className="call-to-action">
               <Link href={callToAction.destination.uri}>
                 {callToAction.label}
               </Link>
@@ -52,6 +58,7 @@ const StyledDiv = styled.div`
 
   ul.main-menu {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
@@ -64,6 +71,14 @@ const StyledDiv = styled.div`
       a {
         ${B1Black};
         padding: 0 1rem;
+      }
+
+      &.call-to-action {
+        a {
+          ${Btn1One};
+          padding-top: 0.25rem;
+          padding-bottom: 0.25rem;
+        }
       }
     }
 

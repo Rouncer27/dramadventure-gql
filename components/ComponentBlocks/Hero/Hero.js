@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import Image from "next/image";
-import { Btn1One, Btn1Two, H1White, H3White } from "@/styles/helpers";
+import { Btn1Two, H3White } from "@/styles/helpers";
+import Link from "next/link";
 
 export const Hero = ({ data }) => {
-  console.log("Hero data", data);
   return (
     <StyledSection>
       <div className="hero-content">
@@ -21,7 +21,11 @@ export const Hero = ({ data }) => {
               >
                 {data.heroContent.button.buttonText}
               </a>
-            ) : null}
+            ) : (
+              <Link href={data.heroContent.button.pageLink.uri}>
+                {data.heroContent.button.buttonText}
+              </Link>
+            )}
           </div>
         </div>
       </div>
