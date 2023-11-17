@@ -1,6 +1,7 @@
 import { client } from "../lib/apolio";
 import { mapMainMenuItems } from "@/utils/mapMainMenuItems";
 import { GET_MAIN_MENU } from "./Queries/getMainMenu";
+import { GET_FOOTER_MENU } from "./Queries/getFooterMenu";
 import { GET_PAGE_DATA } from "./Queries/getPageData";
 import { GET_WHISKEY_DATA } from "./Queries/getWhiskeyData";
 
@@ -27,9 +28,9 @@ export const getPageStaticProps = async (context) => {
     query: GET_MAIN_MENU,
   });
 
-  // const pages = null;
-  // const whiskies = null;
-  // const mainMenu = null;
+  const footerMenu = await client.query({
+    query: GET_FOOTER_MENU,
+  });
 
   const pageType =
     pages?.data.nodeByUri?.contentTypeName === "page"
@@ -54,6 +55,8 @@ export const getPageStaticProps = async (context) => {
     mainMenu?.data?.mainMenu?.mainMenu?.menuItems
   );
 
+  const footerMenuItems = footerMenu.data.footerMenu.footerMenu.footerMenuItems;
+
   const mainLogo =
     mainMenu?.data?.acfOptionsSiteWideSettings?.siteWideSettings?.mainLogo;
   const callToAction = mainMenu?.data?.mainMenu?.mainMenu?.callToActionButton;
@@ -74,6 +77,7 @@ export const getPageStaticProps = async (context) => {
       mainMenuItems,
       callToAction,
       mainLogo,
+      footerMenuItems,
     },
   };
 };
