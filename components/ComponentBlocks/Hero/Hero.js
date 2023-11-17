@@ -25,7 +25,7 @@ export const Hero = ({ data }) => {
               <Link
                 href={
                   data?.heroContent?.button?.pageLink?.uri
-                    ? ata?.heroContent?.button?.pageLink?.uri
+                    ? data?.heroContent?.button?.pageLink?.uri
                     : "#"
                 }
               >
