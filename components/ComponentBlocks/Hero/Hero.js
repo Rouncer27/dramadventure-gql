@@ -22,7 +22,13 @@ export const Hero = ({ data }) => {
                 {data.heroContent.button.buttonText}
               </a>
             ) : (
-              <Link href={data.heroContent.button.pageLink.uri}>
+              <Link
+                href={
+                  data?.heroContent?.button?.pageLink?.uri
+                    ? ata?.heroContent?.button?.pageLink?.uri
+                    : "#"
+                }
+              >
                 {data.heroContent.button.buttonText}
               </Link>
             )}
