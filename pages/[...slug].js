@@ -18,6 +18,7 @@ const SlugPage = ({
   footerLogo,
   instagramUrl,
   youtubeUrl,
+  reviews,
 }) => {
   if (pageType === "page") {
     return (
@@ -29,6 +30,7 @@ const SlugPage = ({
         whiskeyOrigins={whiskeyOrigins}
         whiskyTypes={whiskyTypes}
         mainLogo={mainLogo}
+        reviews={reviews}
         footerData={{ footerMenuItems, footerLogo, instagramUrl, youtubeUrl }}
       />
     );
@@ -39,6 +41,7 @@ const SlugPage = ({
         callToAction={callToAction}
         pageContent={pageContent}
         mainLogo={mainLogo}
+        reviews={reviews}
         footerData={{ footerMenuItems, footerLogo, instagramUrl, youtubeUrl }}
       />
     );

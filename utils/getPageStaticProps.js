@@ -4,6 +4,7 @@ import { GET_MAIN_MENU } from "./Queries/getMainMenu";
 import { GET_FOOTER_MENU } from "./Queries/getFooterMenu";
 import { GET_PAGE_DATA } from "./Queries/getPageData";
 import { GET_WHISKEY_DATA } from "./Queries/getWhiskeyData";
+import { GET_REVIEWS_DATA } from "./Queries/getReviewsData";
 
 export const getPageStaticProps = async (context) => {
   const uri = context?.params?.slug
@@ -23,6 +24,13 @@ export const getPageStaticProps = async (context) => {
       uri,
     },
   });
+
+  // const reviews = await client.query({
+  //   query: GET_REVIEWS_DATA,
+  //   variables: {
+  //     uri,
+  //   },
+  // });
 
   const mainMenu = await client.query({
     query: GET_MAIN_MENU,
@@ -49,6 +57,7 @@ export const getPageStaticProps = async (context) => {
   const whiskeyRegions = pages?.data ? pages?.data?.whiskeyRegions : [];
   const whiskeyOrigins = pages?.data ? pages?.data?.whiskeyOrigins : [];
   const whiskyTypes = pages?.data ? pages?.data?.whiskyTypes : [];
+  const reviews = pages?.data ? pages?.data?.reviews?.nodes : [];
 
   // const mainMenuItems = null;
   const mainMenuItems = mapMainMenuItems(
@@ -87,6 +96,7 @@ export const getPageStaticProps = async (context) => {
       footerLogo,
       instagramUrl,
       youtubeUrl,
+      reviews,
     },
   };
 };

@@ -12,6 +12,7 @@ export const Page = ({
   whiskyTypes,
   mainLogo,
   footerData,
+  reviews,
 }) => {
   return (
     <>
@@ -32,6 +33,7 @@ export const Page = ({
           whiskeyRegions={whiskeyRegions}
           whiskeyOrigins={whiskeyOrigins}
           whiskyTypes={whiskyTypes}
+          reviews={reviews}
         />
       </main>
       <Footer footerData={footerData} />

@@ -37,6 +37,25 @@ export const GET_PAGE_DATA = gql`
               displayWhiskiesSearch
               fieldGroupName
             }
+
+            ... on Page_Pagecomponents_Components_ReviewSlider {
+              displayReviewSlider
+              fieldGroupName
+            }
+          }
+        }
+      }
+    }
+
+    reviews: spritsReviews {
+      nodes {
+        slug
+        uri
+        title
+        reviewsContent {
+          featuredImage {
+            sourceUrl
+            altText
           }
         }
       }
