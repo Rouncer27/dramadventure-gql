@@ -18,5 +18,16 @@ export const GET_FOOTER_MENU = gql`
         }
       }
     }
+
+    acfOptionsSiteWideSettings {
+      siteWideSettings {
+        instagramUrl
+        youtubeUrl
+        footerLogo {
+          sourceUrl
+          altText
+        }
+      }
+    }
   }
 `;

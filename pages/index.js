@@ -7,6 +7,9 @@ const Home = ({
   pageContent,
   mainLogo,
   footerMenuItems,
+  footerLogo,
+  instagramUrl,
+  youtubeUrl,
 }) => {
   return (
     <Page
@@ -15,6 +18,7 @@ const Home = ({
       pageContent={pageContent}
       mainLogo={mainLogo}
       footerMenu={footerMenuItems}
+      footerData={{ footerMenuItems, footerLogo, instagramUrl, youtubeUrl }}
     />
   );
 };

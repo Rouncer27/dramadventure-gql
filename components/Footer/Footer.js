@@ -1,16 +1,26 @@
 import { B2Black, colors, medWrapper } from "@/styles/helpers";
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
 
-export const Footer = ({ footerMenu }) => {
-  console.log("footerMenu: ", footerMenu);
+export const Footer = ({ footerData }) => {
   return (
     <StyledFooter>
       <div className="wrapper">
-        <div className="footer-logo"></div>
+        <div className="footer-logo">
+          <div className="logo-wrap">
+            <Image
+              src={footerData.footerLogo.sourceUrl}
+              height={500}
+              width={500}
+              alt={footerData.footerLogo.altText}
+              objectFit="cover"
+            />
+          </div>
+        </div>
         <nav>
           <ul>
-            {footerMenu.map((item, index) => {
+            {footerData.footerMenuItems.map((item, index) => {
               console.log("item", item);
               return (
                 <li key={index}>
@@ -22,7 +32,20 @@ export const Footer = ({ footerMenu }) => {
             })}
           </ul>
         </nav>
-        <div className="footer-social"></div>
+        <div className="footer-social">
+          <ul>
+            <li>
+              <a target="_blank" rel="noopener" href={footerData.instagramUrl}>
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener" href={footerData.youtubeUrl}>
+                Youtube
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </StyledFooter>
   );
@@ -32,10 +55,15 @@ const StyledFooter = styled.footer`
   background-color: ${colors.colorAccent};
   .wrapper {
     ${medWrapper};
+    align-items: center;
   }
 
   .footer-logo {
     width: 10%;
+
+    .logo-wrap {
+      width: 5rem;
+    }
   }
 
   nav {

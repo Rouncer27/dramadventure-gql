@@ -14,6 +14,10 @@ const SlugPage = ({
   whiskeyOrigins,
   whiskyTypes,
   mainLogo,
+  footerMenuItems,
+  footerLogo,
+  instagramUrl,
+  youtubeUrl,
 }) => {
   if (pageType === "page") {
     return (
@@ -25,6 +29,7 @@ const SlugPage = ({
         whiskeyOrigins={whiskeyOrigins}
         whiskyTypes={whiskyTypes}
         mainLogo={mainLogo}
+        footerData={{ footerMenuItems, footerLogo, instagramUrl, youtubeUrl }}
       />
     );
   } else if (pageType === "whiskey") {
@@ -34,6 +39,7 @@ const SlugPage = ({
         callToAction={callToAction}
         pageContent={pageContent}
         mainLogo={mainLogo}
+        footerData={{ footerMenuItems, footerLogo, instagramUrl, youtubeUrl }}
       />
     );
   } else {

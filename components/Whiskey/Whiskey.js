@@ -7,6 +7,7 @@ export const Whiskey = ({
   mainMenuItems,
   callToAction,
   mainLogo,
+  footerData,
 }) => {
   return (
     <>
@@ -24,7 +25,7 @@ export const Whiskey = ({
       <main>
         <h1>{pageContent.title}</h1>
       </main>
-      <Footer />
+      <Footer footerData={footerData} />
     </>
   );
 };

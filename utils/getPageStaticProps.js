@@ -56,6 +56,12 @@ export const getPageStaticProps = async (context) => {
   );
 
   const footerMenuItems = footerMenu.data.footerMenu.footerMenu.footerMenuItems;
+  const footerLogo =
+    footerMenu.data.acfOptionsSiteWideSettings.siteWideSettings.footerLogo;
+  const instagramUrl =
+    footerMenu.data.acfOptionsSiteWideSettings.siteWideSettings.instagramUrl;
+  const youtubeUrl =
+    footerMenu.data.acfOptionsSiteWideSettings.siteWideSettings.youtubeUrl;
 
   const mainLogo =
     mainMenu?.data?.acfOptionsSiteWideSettings?.siteWideSettings?.mainLogo;
@@ -78,6 +84,9 @@ export const getPageStaticProps = async (context) => {
       callToAction,
       mainLogo,
       footerMenuItems,
+      footerLogo,
+      instagramUrl,
+      youtubeUrl,
     },
   };
 };
